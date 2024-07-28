@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
 import './Navbar.css';
 import logo from '../Assets/logo.png';
-import search from '../Assets/search.png';
 import wishlist from '../Assets/wishlist.png';
 import cart from '../Assets/cart.png';
 import profile from '../Assets/profile.png';
@@ -137,9 +136,6 @@ const Navbar = () => {
             </div>
             <div className="navbar-search">
                 <input type="text" placeholder={t('search')}/>
-                <button className="search-button">
-                    <img src={search} alt="Search"/>
-                </button>
             </div>
             <div className="navbar-icons">
                 <a href="#" className="icon">
