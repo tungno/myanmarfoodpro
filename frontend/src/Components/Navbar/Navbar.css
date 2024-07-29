@@ -1,17 +1,32 @@
+/* apply the whole navbar */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #ffef00;
     padding: 10px 20px;
+    position: relative;
 }
 
+/* logo */
 .navbar-logo img {
     height: 50px;
+    cursor: pointer;
 }
 
+/* menu icon */
+.navbar-menu-icon {
+    display: none;
+    cursor: pointer;
+}
+.navbar-menu-icon img {
+    height: 40px;
+}
+
+/* Our Product, Tips & Guides, about us */
 .navbar-items {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
@@ -44,6 +59,7 @@
     font-weight: bold;
     margin-left: 5px;
 }
+
 .location-icon, .language-icon {
     margin-right: 5px;
     height: 20px;
@@ -112,13 +128,13 @@
     background-color: #f1c40f;
 }
 
-
 /* Navbar search */
 .navbar-search {
     display: flex;
     align-items: center;
     position: relative;
 }
+
 .navbar-search input {
     padding: 5px 10px;
     border: none;
@@ -163,5 +179,50 @@
 @media (min-width: 1900px) {
     .navbar {
         padding: 10px 200px; /* Increase the side margins */
+    }
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .navbar-menu-icon {
+        display: block;
+    }
+
+    .navbar-items {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100%;
+        background-color: #ffef00;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .navbar-items.open {
+        transform: translateX(0);
+    }
+
+    .navbar-search {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .navbar-item {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .deliver-to, .language-select {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .navbar-icons {
+        display: none;
     }
 }

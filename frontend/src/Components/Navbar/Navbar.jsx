@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../Assets/logo.png';
 import wishlist from '../Assets/wishlist.png';
 import cart from '../Assets/cart.png';
 import profile from '../Assets/profile.png';
 import location from '../Assets/location.png';
-import languageIcon from '../Assets/language.png'; // Replace with actual path to your language icon
+import languageIcon from '../Assets/language.png';
 import downArrowIcon from '../Assets/downArrowIcon.png';
+import hamburgerIcon from '../Assets/humbergermenu.png';
+import closeIcon from '../Assets/crossmenu.png';
 import { getLocation } from "../../services/locationService";
 
 const Navbar = () => {
     const { t, i18n } = useTranslation();
-    const [country, setCountry ] = useState('Loading...');
+    const [country, setCountry] = useState('Loading...');
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [showProductsDropdown, setShowProductsDropdown] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const fetchLocation = async () => {
@@ -61,12 +65,24 @@ const Navbar = () => {
         setShowLanguageDropdown(false);
     };
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <img src={logo} alt="MMFood Logo" />
+                <Link to="/">
+                    <img src={logo} alt="MMFood Logo" />
+                </Link>
             </div>
-            <div className="navbar-items">
+            <div className="navbar-menu-icon" onClick={toggleMenu}>
+                <img src={menuOpen ? closeIcon : hamburgerIcon} alt="Menu Icon" />
+            </div>
+            <div className={`navbar-items ${menuOpen ? 'open' : ''}`}>
+                <div className="navbar-search">
+                    <input type="text" placeholder={t('search')} />
+                </div>
                 <div className="navbar-item" onMouseEnter={handleCountryMouseEnter} onMouseLeave={handleCountryMouseLeave}>
                     <img src={location} alt="Location" className="location-icon" />
                     <div className="deliver-to">
@@ -98,10 +114,9 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="navbar-item" onMouseEnter={handleProductsMouseEnter}
-                     onMouseLeave={handleProductsMouseLeave}>
+                <div className="navbar-item" onMouseEnter={handleProductsMouseEnter} onMouseLeave={handleProductsMouseLeave}>
                     <span className="bold-text">{t('our_products')}</span>
-                    <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon"/>
+                    <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon" />
                     {showProductsDropdown && (
                         <div className="products-dropdown">
                             <div className="dropdown-section">
@@ -134,18 +149,15 @@ const Navbar = () => {
                 <a href="#" className="navbar-item">{t('tips_guides')}</a>
                 <a href="#" className="navbar-item">{t('about_us')}</a>
             </div>
-            <div className="navbar-search">
-                <input type="text" placeholder={t('search')}/>
-            </div>
             <div className="navbar-icons">
                 <a href="#" className="icon">
-                    <img src={wishlist} alt="Wishlist"/>
+                    <img src={wishlist} alt="Wishlist" />
                 </a>
                 <a href="#" className="icon">
-                    <img src={cart} alt="Cart"/>
+                    <img src={cart} alt="Cart" />
                 </a>
                 <a href="#" className="icon">
-                    <img src={profile} alt="Profile"/>
+                    <img src={profile} alt="Profile" />
                 </a>
             </div>
         </nav>
