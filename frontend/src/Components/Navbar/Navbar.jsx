@@ -36,7 +36,6 @@ const Navbar = () => {
     const handleCountryMouseEnter = () => {
         setShowCountryDropdown(true);
     };
-
     const handleCountryMouseLeave = () => {
         setShowCountryDropdown(false);
     };
@@ -44,7 +43,6 @@ const Navbar = () => {
     const handleLanguageMouseEnter = () => {
         setShowLanguageDropdown(true);
     };
-
     const handleLanguageMouseLeave = () => {
         setShowLanguageDropdown(false);
     };
@@ -71,24 +69,31 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+            <div className="navbar-menu-icon" onClick={toggleMenu}>
+                <img src={menuOpen ? closeIcon : hamburgerIcon} alt="Menu Icon"/>
+            </div>
             <div className="navbar-logo">
                 <Link to="/">
-                    <img src={logo} alt="MMFood Logo" />
+                    <img src={logo} alt="MMFood Logo"/>
                 </Link>
             </div>
-            <div className="navbar-menu-icon" onClick={toggleMenu}>
-                <img src={menuOpen ? closeIcon : hamburgerIcon} alt="Menu Icon" />
-            </div>
-            <div className={`navbar-items ${menuOpen ? 'open' : ''}`}>
+
+
+            <div className="one-item">
                 <div className="navbar-search">
-                    <input type="text" placeholder={t('search')} />
+                    <input type="text" placeholder={t('search')}/>
                 </div>
-                <div className="navbar-item" onMouseEnter={handleCountryMouseEnter} onMouseLeave={handleCountryMouseLeave}>
-                    <img src={location} alt="Location" className="location-icon" />
+            </div>
+
+
+            <div className="two-items">
+                <div className="navbar-item" onMouseEnter={handleCountryMouseEnter}
+                     onMouseLeave={handleCountryMouseLeave}>
+                    <img src={location} alt="Location" className="location-icon"/>
                     <div className="deliver-to">
                         <span className="normal-text">{t('deliver_to')}</span>
                         <span className="country bold-text">{country}</span>
-                        <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon" />
+                        <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon"/>
                     </div>
                     {showCountryDropdown && (
                         <div className="dropdown">
@@ -99,11 +104,12 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="navbar-item" onMouseEnter={handleLanguageMouseEnter} onMouseLeave={handleLanguageMouseLeave}>
-                    <img src={languageIcon} alt="Language" className="language-icon" />
+                <div className="navbar-item" onMouseEnter={handleLanguageMouseEnter}
+                     onMouseLeave={handleLanguageMouseLeave}>
+                    <img src={languageIcon} alt="Language" className="language-icon"/>
                     <div className="language-select">
                         <span className="bold-text">{t('language')}</span>
-                        <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon" />
+                        <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon"/>
                     </div>
                     {showLanguageDropdown && (
                         <div className="dropdown">
@@ -114,9 +120,12 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="navbar-item" onMouseEnter={handleProductsMouseEnter} onMouseLeave={handleProductsMouseLeave}>
+            </div>
+            <div className={`navbar-items ${menuOpen ? 'open' : ''}`}>
+                <div className="navbar-item" onMouseEnter={handleProductsMouseEnter}
+                     onMouseLeave={handleProductsMouseLeave}>
                     <span className="bold-text">{t('our_products')}</span>
-                    <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon" />
+                    <img src={downArrowIcon} alt="Dropdown" className="down-arrow-icon"/>
                     {showProductsDropdown && (
                         <div className="products-dropdown">
                             <div className="dropdown-section">
@@ -149,16 +158,24 @@ const Navbar = () => {
                 <a href="#" className="navbar-item">{t('tips_guides')}</a>
                 <a href="#" className="navbar-item">{t('about_us')}</a>
             </div>
-            <div className="navbar-icons">
-                <a href="#" className="icon">
-                    <img src={wishlist} alt="Wishlist" />
-                </a>
-                <a href="#" className="icon">
-                    <img src={cart} alt="Cart" />
-                </a>
-                <a href="#" className="icon">
-                    <img src={profile} alt="Profile" />
-                </a>
+
+
+            <div className="three-icon">
+                <div className="navbar-icons">
+                    <a href="#" className="icon">
+                        <img src={wishlist} alt="Wishlist"/>
+                    </a>
+                </div>
+                <div className="navbar-icons">
+                    <a href="#" className="icon">
+                        <img src={cart} alt="Cart"/>
+                    </a>
+                </div>
+                <div className="navbar-icons">
+                    <a href="#" className="icon">
+                        <img src={profile} alt="Profile"/>
+                    </a>
+                </div>
             </div>
         </nav>
     );

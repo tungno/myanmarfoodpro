@@ -143,10 +143,16 @@
     color: black;
     outline: none;
 }
+.two-items {
+    display: flex;
+    gap: 20px;
+}
+
 
 /* wishlist, cart, profile */
-.navbar-icons {
+.three-icon {
     display: flex;
+    justify-content: space-around;
     gap: 20px;
 }
 
@@ -160,20 +166,21 @@
     border-radius: 50%;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
-
 .icon img {
     height: 30px;
     transition: transform 0.3s ease;
 }
-
 .icon:hover {
     background-color: #f1c40f;
     transform: scale(1.2); /* Makes the background larger */
 }
-
 .icon:hover img {
     transform: scale(1.1); /* Optional: Slightly increase the icon size */
 }
+
+
+
+
 
 /* Responsive styling for screens wider than 1900px */
 @media (min-width: 1900px) {
@@ -182,24 +189,31 @@
     }
 }
 
+
+
+
+
 /* Responsive styles for mobile */
 @media (max-width: 768px) {
+    .navbar {
+        display: flex;
+    }
     .navbar-menu-icon {
         display: block;
     }
 
     .navbar-items {
         position: fixed;
-        top: 0;
+        top: 73px;
         left: 0;
         width: 80%;
         height: 100%;
-        background-color: #ffef00;
+        background-color: #43B02A;
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
         transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.4s ease-in-out;
         z-index: 999;
     }
 
@@ -223,6 +237,6 @@
     }
 
     .navbar-icons {
-        display: none;
+
     }
 }
