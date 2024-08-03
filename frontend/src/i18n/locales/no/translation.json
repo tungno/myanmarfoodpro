@@ -1,8 +1,24 @@
 {
+  "search": "Søk...",
   "deliver_to": "Lever til",
+  "norway": "Norge",
+  "sweden": "Sverige",
+  "denmark": "Danmark",
+  "finland": "Finland",
   "language": "Språk",
+  "english": "Engelsk",
+  "norwegian": "Norsk",
+  "burmese": "Burmesisk",
+  "zomi": "Zomi",
   "our_products": "Våre Produkter",
-  "tips_guides": "Tips og Veiledning",
-  "about_us": "Om oss",
-  "search": "Søk..."
+  "lahphet": "Lahphet",
+  "yuwanah_lahphet": "Yuwanah Lahphet",
+  "mandalay_lahphet": "Mandalay Lahphet",
+  "kalay_lahphet": "Kalay Lahphet",
+  "spicy_food": "Sterk Mat",
+  "healthy_food": "Sunn Mat",
+  "traditional_food": "Tradisjonell Mat",
+  "tips_guides": "Tips & Veiledninger",
+  "about_us": "Om Oss",
+  "login": "Logg Inn"
 }

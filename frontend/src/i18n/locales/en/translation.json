@@ -1,8 +1,24 @@
 {
+  "search": "Search...",
   "deliver_to": "Deliver to",
+  "norway": "Norway",
+  "sweden": "Sweden",
+  "denmark": "Denmark",
+  "finland": "Finland",
   "language": "Language",
+  "english": "English",
+  "norwegian": "Norwegian",
+  "burmese": "Burmese",
+  "zomi": "Zomi",
   "our_products": "Our Products",
+  "lahphet": "Lahphet",
+  "yuwanah_lahphet": "Yuwanah Lahphet",
+  "mandalay_lahphet": "Mandalay Lahphet",
+  "kalay_lahphet": "Kalay Lahphet",
+  "spicy_food": "Spicy Food",
+  "healthy_food": "Healthy Food",
+  "traditional_food": "Traditional Food",
   "tips_guides": "Tips & Guides",
-  "about_us": "About us",
-  "search": "Search..."
+  "about_us": "About Us",
+  "login": "Login"
 }

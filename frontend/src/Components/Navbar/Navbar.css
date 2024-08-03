@@ -1,33 +1,28 @@
-/* apply the whole navbar */
+/* General Styles */
 .navbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     background-color: #ffef00;
     padding: 10px 20px;
-    position: relative;
+    flex-wrap: wrap;
 }
 
-/* logo */
+.navbar-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Hamburger menu icon */
+.navbar-menu-icon {
+    display: none;
+}
+
 .navbar-logo img {
     height: 50px;
     cursor: pointer;
-}
-
-/* menu icon */
-.navbar-menu-icon {
-    display: none;
-    cursor: pointer;
-}
-.navbar-menu-icon img {
-    height: 40px;
-}
-
-/* Our Product, Tips & Guides, about us */
-.navbar-items {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 .navbar-item {
@@ -45,32 +40,8 @@
     background-color: #f1c40f;
 }
 
-.deliver-to, .language-select {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.normal-text {
-    font-weight: normal;
-}
-
-.country {
-    font-weight: bold;
-    margin-left: 5px;
-}
-
-.location-icon, .language-icon {
-    margin-right: 5px;
-    height: 20px;
-}
-
-.down-arrow-icon {
-    margin-left: 5px;
-    height: 15px; /* Increased size */
-}
-
-.dropdown {
+/* Dropdowns for location and language */
+.dropdown-location-language {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -82,12 +53,12 @@
     text-align: center;
 }
 
-.dropdown div {
+.dropdown-location-language div {
     padding: 10px;
     cursor: pointer;
 }
 
-.dropdown div:hover {
+.dropdown-location-language div:hover {
     background-color: #f1c40f;
 }
 
@@ -101,6 +72,15 @@
     display: flex;
     gap: 50px;
     padding: 50px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.5s;
+}
+.products-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .dropdown-section {
@@ -109,32 +89,56 @@
     align-items: flex-start;
     white-space: nowrap;
 }
-
 .dropdown-title {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 10px;
     cursor: pointer;
 }
-
 .dropdown-item {
     margin-bottom: 5px;
     text-decoration: none;
     color: black;
     cursor: pointer;
 }
-
 .dropdown-item:hover, .dropdown-title:hover {
     text-decoration: underline;
     background-color: #f1c40f;
 }
 
-/* Navbar search */
-.navbar-search {
-    display: flex;
-    align-items: center;
-    position: relative;
+
+
+.location-icon,
+.language-icon,
+.profile-icon {
+    height: 20px;
+    margin-right: 5px;
 }
 
+.deliver-to,
+.language-select {
+    display: flex;
+    align-items: center;
+}
+
+.normal-text {
+    font-weight: normal;
+}
+
+.country,
+.bold-text {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.down-arrow-icon {
+    margin-left: 5px;
+    height: 15px;
+}
+
+.navbar-search {
+    flex: 1; /* Ensure search bar takes the remaining space */
+    display: flex;
+}
 .navbar-search input {
     padding: 5px 10px;
     border: none;
@@ -142,88 +146,133 @@
     background-color: #ffef00;
     color: black;
     outline: none;
-}
-.two-items {
-    display: flex;
-    gap: 20px;
+    width: 100%;
+    font-size: 16px;
 }
 
 
-/* wishlist, cart, profile */
-.three-icon {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
+/* hjemme wishlist og cart for desktop som er i ventre */
+.navbar-wishlist-cart1 {
+    display: none;
+}
+.profile-icon1 {
+    display: none;
 }
 
-.icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.icon img {
-    height: 30px;
-    transition: transform 0.3s ease;
-}
-.icon:hover {
-    background-color: #f1c40f;
-    transform: scale(1.2); /* Makes the background larger */
-}
-.icon:hover img {
-    transform: scale(1.1); /* Optional: Slightly increase the icon size */
-}
-
-
-
-
-
-/* Responsive styling for screens wider than 1900px */
-@media (min-width: 1900px) {
+/* Responsive styles */
+@media (max-width: 430px) {
     .navbar {
-        padding: 10px 200px; /* Increase the side margins */
-    }
-}
-
-
-
-
-
-/* Responsive styles for mobile */
-@media (max-width: 768px) {
-    .navbar {
-        display: flex;
-    }
-    .navbar-menu-icon {
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: flex-start;
     }
 
-    .navbar-items {
-        position: fixed;
-        top: 73px;
+    .products-dropdown {
+        position: absolute;
+        top: 100%;
         left: 0;
-        width: 80%;
+        width: 86%;
+        background-color: antiquewhite;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.5s;
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+    .products-dropdown.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-menu-icon {
+        display: flex;
+        height: 20px;
+    }
+
+    .navbar-group-1,
+    .navbar-group-2,
+    .navbar-group-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+    }
+
+    .navbar-search {
+        grid-column: span 3;
+        width: 100%;
+        order: 4;
+    }
+
+    .navbar-search input {
+        padding: 10px 10px;
+        border: none;
+        background-color: white;
+        color: black;
+        outline: none;
+        flex: 1;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .navbar-group-4 {
+        display: none;
+    }
+
+    .navbar-group-1 .navbar-menu-icon {
+        order: 1;
+        justify-self: start;
+    }
+
+    .navbar-group-1 .navbar-logo {
+        order: 2;
+        justify-self: center;
+    }
+
+    .navbar-group-1 .navbar-wishlist-cart1 {
+        order: 3;
+        justify-self: end;
+    }
+
+    .navbar-group-2 {
+        order: 4;
+        justify-self: center;
+    }
+
+    .navbar-group-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        order: 5;
+        justify-self: center;
+    }
+
+    .navbar-items-product-tips-aboutus {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 75%;
         height: 100%;
         background-color: #43B02A;
+        display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
         padding: 20px;
         transform: translateX(-100%);
         transition: transform 0.4s ease-in-out;
         z-index: 999;
     }
-
-    .navbar-items.open {
+    .navbar-items-product-tips-aboutus.open {
         transform: translateX(0);
-    }
-
-    .navbar-search {
-        width: 100%;
-        margin-bottom: 20px;
     }
 
     .navbar-item {
@@ -231,12 +280,155 @@
         padding: 10px 0;
     }
 
-    .deliver-to, .language-select {
+    .navbar-right {
+        display: none;
+    }
+    .navbar-wishlist-cart1 {
+        display: flex;
+    }
+    .profile-icon1 {
+        display: flex;
+    }
+}
+
+
+/* Responsive styles for ipad */
+@media (max-width: 834px) {
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+    }
+
+    .products-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 87.4%;
+        background-color: antiquewhite;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.5s;
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+    .products-dropdown.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-menu-icon {
+        display: flex;
+        height: 25px;
+    }
+
+    .navbar-group-1,
+    .navbar-group-2,
+    .navbar-group-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
-        justify-content: space-between;
     }
 
-    .navbar-icons {
-
+    .navbar-search {
+        grid-column: span 3;
+        width: 100%;
+        order: 4;
     }
+
+    .navbar-search input {
+        padding: 10px 10px;
+        border: none;
+        background-color: white;
+        color: black;
+        outline: none;
+        flex: 1;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .navbar-group-4 {
+        display: none;
+    }
+
+    .navbar-group-1 .navbar-menu-icon {
+        order: 1;
+        justify-self: start;
+    }
+
+    .navbar-group-1 .navbar-logo {
+        order: 2;
+        justify-self: center;
+    }
+
+    .navbar-group-1 .navbar-wishlist-cart1 {
+        order: 3;
+        justify-self: end;
+    }
+
+    .navbar-group-2 {
+        order: 4;
+        justify-self: center;
+    }
+
+    .navbar-group-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        order: 5;
+        justify-self: center;
+    }
+
+    .navbar-items-product-tips-aboutus {
+        position: fixed;
+        top: 63px;
+        left: 0;
+        width: 75%;
+        height: 100%;
+        background-color: #43B02A;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
+    }
+    .navbar-items-product-tips-aboutus.open {
+        transform: translateX(0);
+    }
+
+    .navbar-item {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .navbar-right {
+        display: none;
+    }
+    .navbar-wishlist-cart1 {
+        display: flex;
+        gap: 30px;
+    }
+    .profile-icon1 {
+        display: flex;
+    }
+    .wishlist-cart img {
+        height: 30px;
+    }
+}
+
+/* Style for ipad pro 11-inch in portrait mode */
+@media (min-width: 834px) {
+    
 }
