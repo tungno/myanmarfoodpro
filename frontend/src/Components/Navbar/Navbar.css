@@ -159,7 +159,7 @@
     display: none;
 }
 
-.wishlist-count {
+.wishlist-count, .basket-count {
     position: absolute;
     top: -1px;
     right: -5px;

@@ -13,7 +13,7 @@ import hamburgerIcon from '../Assets/humbergermenu.png';
 import closeIcon from '../Assets/crossmenu.png';
 import { getLocation } from "../../services/locationService";
 
-const Navbar = ({ wishlistCount }) => {
+const Navbar = ({ wishlistCount, basketCount }) => { // Add basketCount prop
     const { t, i18n } = useTranslation();
     const [country, setCountry] = useState('Loading...');
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
@@ -83,6 +83,7 @@ const Navbar = ({ wishlistCount }) => {
                     </a>
                     <a href="#" className="navbar-item wishlist-cart">
                         <img src={cart} alt="Cart"/>
+                        {basketCount > 0 && <span className="basket-count">{basketCount}</span>}
                     </a>
                 </div>
             </div>
@@ -175,6 +176,7 @@ const Navbar = ({ wishlistCount }) => {
                 </div>
                 <div className="navbar-item">
                     <img src={cart} alt="Cart"/>
+                    {basketCount > 0 && <span className="basket-count">{basketCount}</span>} {/* Display basket count */}
                 </div>
                 <div className="navbar-item profile-ico">
                     <img src={profile} alt="Profile" className="profile-icon"/>
