@@ -1,11 +1,18 @@
 // src/services/locationService.js
 import axios from 'axios';
 
-const API_KEY = '3b4adc43bcb541d4a47cbadb2aba2aca'; // Replace with the actual API key
+const API_KEY = '31bb46885d90480f83233d6e1fdf9a30'; // Replace with the actual API key
 
 export const getLocation = async () => {
+    const cachedLocation = localStorage.getItem('locationData');
+    if (cachedLocation) {
+        console.log('localstorage angah hiam sittelna', cachedLocation);
+        return JSON.parse(cachedLocation);
+    }
+
     try {
         const response = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}`);
+        localStorage.setItem('locationData', JSON.stringify(response.data));
         return response.data;
     } catch (error) {
         console.error('Error fetching location data:', error);
