@@ -15,12 +15,7 @@ import traditionalfood_banner from './Components/Asset/banner_traditionalfood.pn
 import snackfood_banner from './Components/Asset/banner_snackfood.png';
 
 function App() {
-    const [wishlistCount, setWishlistCount] = useState(0);
     const [basketCount, setBasketCount] = useState(0);
-
-    const handleWishlistChange = (count) => {
-        setWishlistCount(count);
-    };
 
     const handleBasketChange = (count) => {
         setBasketCount(count);
@@ -29,13 +24,13 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Navbar wishlistCount={wishlistCount} basketCount={basketCount} />
+                <Navbar basketCount={basketCount} />
                 <Routes>
-                    <Route path='/' element={<Home onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
-                    <Route path='/seafoods' element={<ShopCategory banner={seafood_banner} category="seafood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
-                    <Route path='/farmfoods' element={<ShopCategory banner={farmfood_banner} category="farmfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
-                    <Route path='/traditionalfoods' element={<ShopCategory banner={traditionalfood_banner} category="traditionalfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
-                    <Route path='/snackfoods' element={<ShopCategory banner={snackfood_banner} category="snackfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path='/' element={<Home  onBasketChange={handleBasketChange} />} />
+                    <Route path='/seafoods' element={<ShopCategory banner={seafood_banner} category="seafood" onBasketChange={handleBasketChange} />} />
+                    <Route path='/farmfoods' element={<ShopCategory banner={farmfood_banner} category="farmfood" onBasketChange={handleBasketChange} />} />
+                    <Route path='/traditionalfoods' element={<ShopCategory banner={traditionalfood_banner} category="traditionalfood" onBasketChange={handleBasketChange} />} />
+                    <Route path='/snackfoods' element={<ShopCategory banner={snackfood_banner} category="snackfood" onBasketChange={handleBasketChange} />} />
                     <Route path="product" element={<Product />}>
                         <Route path=':productId' element={<Product />} />
                     </Route>

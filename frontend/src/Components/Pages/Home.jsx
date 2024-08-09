@@ -5,12 +5,12 @@ import Category from './Homepage/Category/Category';
 import ProductForYou from './Homepage/ProductForYou/ProductForYou';
 import NewsLetter from "./Homepage/NewsLetter/NewsLetter";
 
-const Home = ({ onWishlistChange, onBasketChange }) => { // Add basket handler prop
+const Home = ({onBasketChange }) => { // Add basket handler prop
     return (
         <div>
             <ShowProduct />
             <Category />
-            <ProductForYou onWishlistChange={onWishlistChange} onBasketChange={onBasketChange} /> {/* Pass basket handler */}
+            <ProductForYou  onBasketChange={onBasketChange} /> {/* Pass basket handler */}
             <NewsLetter />
         </div>
     );

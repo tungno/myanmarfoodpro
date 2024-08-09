@@ -1,5 +1,4 @@
 import p12_img from "./product_12.png";
-import p35_img from "./product_30.png";
 import p14_img from "./product_14.png";
 import p8_img from "./product_8.png";
 import p15_img from "./product_15.png";
@@ -13,7 +12,7 @@ let new_collections = [
     name: "Sleeve Top",
     description: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "snack_food",
-    stock: "out of stock",
+    stock_quantity: 0, // Out of stock
     image: p12_img,
     new_price: 50.0,
     old_price: 80.5,
@@ -23,7 +22,7 @@ let new_collections = [
     name: "Slim Fit",
     description: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "farm_food",
-    stock: "few in stock",
+    stock_quantity: 5, // Few in stock
     image: p14_img,
     new_price: 60.0,
     old_price: 100.5,
@@ -33,7 +32,7 @@ let new_collections = [
     name: "Flutter Sleeve",
     description: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "snack_food",
-    stock: "few in stock",
+    stock_quantity: 8, // Few in stock
     image: p8_img,
     new_price: 100.0,
     old_price: 150.0,
@@ -43,7 +42,7 @@ let new_collections = [
     name: "Full-Zip Bomber",
     description: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "traditional_food",
-    stock: "out of stock",
+    stock_quantity: 0, // Out of stock
     image: p15_img,
     new_price: 50.0,
     old_price: 80.5,
@@ -53,7 +52,7 @@ let new_collections = [
     name: "Flutter Blouse",
     description: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "farm_food",
-    stock: "few in stock",
+    stock_quantity: 3, // Few in stock
     image: p2_img,
     new_price: 85.0,
     old_price: 120.5,
@@ -63,7 +62,7 @@ let new_collections = [
     name: "Green Bomber",
     description: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "seafood",
-    stock: "few in stock",
+    stock_quantity: 4, // Few in stock
     image: p17_img,
     new_price: 60.0,
     old_price: 100.5,
@@ -73,7 +72,7 @@ let new_collections = [
     name: "Orange Sweatshirt",
     description: "Boys Orange Colourblocked Hooded Sweatshirt",
     category: "snack_food",
-    stock: "in stock",
+    stock_quantity: 20, // In stock
     image: p28_img,
     new_price: 100.0,
     old_price: 150.0,

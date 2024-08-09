@@ -14,9 +14,8 @@ import hamburgerIcon from '../Assets/humbergermenu.png';
 import closeIcon from '../Assets/crossmenu.png';
 import { getLocation } from "../../services/locationService";
 
-const Navbar = memo(({ wishlistCount, basketCount }) => {
+const Navbar = memo(({ basketCount }) => {
     const { t, i18n } = useTranslation();
-    const navigate = useNavigate();
     const [country, setCountry] = useState('Loading...');
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
@@ -95,7 +94,6 @@ const Navbar = memo(({ wishlistCount, basketCount }) => {
                     <Link style={{textDecoration: 'none'}} to='/wishlist'>
                         <div className="navbar-item wishlist-cart">
                             <img src={wishlist} alt="Wishlist"/>
-                            {wishlistCount > 0 && <span className="wishlist-count">{wishlistCount}</span>}
                         </div>
                     </Link>
                     <Link style={{textDecoration: 'none'}} to='/cart'>
@@ -198,7 +196,6 @@ const Navbar = memo(({ wishlistCount, basketCount }) => {
                 <div className="navbar-item">
                     <Link style={{textDecoration: 'none'}} to='/wishlist'>
                         <img src={wishlist} alt="Wishlist"/>
-                        {wishlistCount > 0 && <span className="wishlist-count">{wishlistCount}</span>}
                     </Link>
                 </div>
                 <div className="navbar-item">

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import './ProductDisplay.css'
-import star_icon from "../Asset/star_icon.png";
-import star_dull_icon from "../Asset/star_dull_icon.png";
-import { ShopContext } from '../../Context/ShopContext';
-import basket from '../Assets/cart.png';
-import inStockIcon from '../Assets/in_stock.png';
-import fewInStockIcon from '../Assets/few_in_stock.png';
-import outOfStockIcon from '../Assets/out_of_stock.png';
+import star_icon from "../../../Asset/star_icon.png";
+import star_dull_icon from "../../../Asset/star_dull_icon.png";
+import { ShopContext } from '../../../../Context/ShopContext';
+import basket from '../../../Assets/cart.png';
+import inStockIcon from '../../../Assets/in_stock.png';
+import fewInStockIcon from '../../../Assets/few_in_stock.png';
+import outOfStockIcon from '../../../Assets/out_of_stock.png';
 
 const ProductDisplay = (props) => {
 
