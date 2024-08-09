@@ -1,0 +1,114 @@
+.item{
+    width: 21%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding:15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+.item img{
+    width: 100%;
+}
+.item p{
+    margin: 6px 0px;
+}
+.wishlist-icon img {
+    height: 40px;
+}
+
+.stock-status img {
+    width: auto;
+}
+
+.item-prices{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.item-price-new{
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+}
+.item-price-old{
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+@media (min-width: 835px) and (max-width: 1440px) {
+    .item{
+        width: 20%;
+    }
+    .item-price-old{
+        font-size: 12px;
+    }
+    .wishlist-icon img {
+        height: 20px;
+    }
+    .wishlist-icon {
+        width: 15%
+    }
+    .wishlist-icon img {
+        height: 40px;
+    }
+}
+
+@media(min-width: 431px) and (max-width:834px){
+    .item{
+        width: 25%;
+    }
+    .item-price-old{
+        font-size: 12px;
+    }
+    .wishlist-icon img {
+        height: 20px;
+    }
+    .wishlist-icon {
+        width: 20%
+    }
+    .wishlist-icon img {
+        height: 40px;
+    }
+}
+@media(max-width:430px){
+    .item{
+        width: 35%;
+    }
+    .item p{
+        font-size: 14px;
+    }
+    .wishlist-icon {
+        width: 20%
+    }
+    .wishlist-icon img {
+        height: 20px;
+    }
+    .item-price-new{
+        font-size: 14px;
+    }
+    .item-prices {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Ensure all elements are vertically centered */
+        gap: 5px;
+        font-size: 12px; /* Adjust font size for smaller text */
+        padding: 5px; /* Adjust padding if needed */
+        margin: 5px 0; /* Adjust margin if needed */
+        max-width: 100%; /* Ensure it fits within the container */
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    }
+
+    .basket-icon img {
+        width: 16px; /* Adjust size of basket icon */
+        height: 16px; /* Adjust size of basket icon */
+    }
+    .item-price-old {
+        font-size: 12px;
+    }
+
+}

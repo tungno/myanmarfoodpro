@@ -5,25 +5,42 @@ import Footer from './Components/Footer/Footer';
 import Footer1 from './Components/Footer/Footer1';
 import Home from './Components/Pages/Home';
 import './App.css';
+import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import Product from "./Components/Pages/Product";
+import ShopCategory from "./Components/Pages/ShopCategory";
+import Cart from "./Components/Pages/Cart";
+import seafood_banner from './Components/Asset/banner_seafood.png';
+import farmfood_banner from './Components/Asset/banner_farmfood.png';
+import traditionalfood_banner from './Components/Asset/banner_traditionalfood.png';
+import snackfood_banner from './Components/Asset/banner_snackfood.png';
 
 function App() {
     const [wishlistCount, setWishlistCount] = useState(0);
-    const [basketCount, setBasketCount] = useState(0); // Add basket count state
+    const [basketCount, setBasketCount] = useState(0);
 
     const handleWishlistChange = (count) => {
         setWishlistCount(count);
     };
 
-    const handleBasketChange = (count) => { // Add basket count handler
+    const handleBasketChange = (count) => {
         setBasketCount(count);
     };
 
     return (
         <div className="App">
             <BrowserRouter>
-                <Navbar wishlistCount={wishlistCount} basketCount={basketCount} /> {/* Pass basket count */}
+                <Navbar wishlistCount={wishlistCount} basketCount={basketCount} />
                 <Routes>
-                    <Route path='/' element={<Home onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} /> {/* Pass basket handler */}
+                    <Route path='/' element={<Home onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path='/seafoods' element={<ShopCategory banner={seafood_banner} category="seafood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path='/farmfoods' element={<ShopCategory banner={farmfood_banner} category="farmfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path='/traditionalfoods' element={<ShopCategory banner={traditionalfood_banner} category="traditionalfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path='/snackfoods' element={<ShopCategory banner={snackfood_banner} category="snackfood" onWishlistChange={handleWishlistChange} onBasketChange={handleBasketChange} />} />
+                    <Route path="product" element={<Product />}>
+                        <Route path=':productId' element={<Product />} />
+                    </Route>
+                    <Route path='/cart' element={<Cart />} />
+                    <Route path="/login-signup" element={<LoginSignup />} />
                 </Routes>
                 <Footer />
                 <Footer1 />

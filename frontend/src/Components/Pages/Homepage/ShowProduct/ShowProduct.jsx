@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './ShowProduct.css';
-import largephoto1 from "../Assets/largephoto.png";
-import largephoto2 from "../Assets/largephoto2.png";
-import largephoto3 from "../Assets/largephoto3.png";
-import greaterthan from "../Assets/greaterthan.png";
-import lessthan from "../Assets/lessthan.png";
+import largephoto1 from "../../../Assets/largephoto.png";
+import largephoto2 from "../../../Assets/largephoto2.png";
+import largephoto3 from "../../../Assets/largephoto3.png";
+import greaterthan from "../../../Assets/greaterthan.png";
+import lessthan from "../../../Assets/lessthan.png";
 
 const ShowProduct = () => {
     const photos = [largephoto1, largephoto2, largephoto3];

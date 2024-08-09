@@ -1,11 +1,11 @@
 /* General Styles */
 .navbar {
-    display: flex;   /* Use flexbos for layout */
+    display: flex; /* Use flexbox for layout */
     justify-content: space-between;
     align-items: center;
     background-color: #ffef00;
     padding: 10px 20px;
-    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    flex-wrap: nowrap; /* Allow items to wrap to the next line if needed */
 }
 
 .navbar-section {
@@ -105,8 +105,6 @@
     background-color: #f1c40f;
 }
 
-
-
 .location-icon,
 .language-icon,
 .profile-icon {
@@ -150,7 +148,6 @@
     font-size: 16px;
 }
 
-
 /* hjemme wishlist og cart for desktop som er i ventre */
 .navbar-wishlist-cart1 {
     display: none;
@@ -170,7 +167,6 @@
     font-size: 12px;
 }
 
-
 /* Responsive styles */
 /* Mobile Devices (iPhone 15 Pro Max and less) */
 @media (max-width: 430px) {
@@ -184,7 +180,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        width: 87.5%;
+        width: 100%;
         background-color: antiquewhite;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
         z-index: 1000;
@@ -284,6 +280,7 @@
         transform: translateX(-100%);
         transition: transform 0.4s ease-in-out;
         z-index: 999;
+        overflow-y: auto; /* Allow scrolling within the menu */
     }
     .navbar-items-product-tips-aboutus.open {
         transform: translateX(0);
@@ -317,7 +314,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        width: 87.25%;
+        width: 100%;
         background-color: antiquewhite;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
         z-index: 1000;
@@ -416,6 +413,7 @@
         transform: translateX(-100%);
         transition: transform 0.4s ease-in-out;
         z-index: 999;
+        overflow-y: auto; /* Allow scrolling within the menu */
     }
     .navbar-items-product-tips-aboutus.open {
         transform: translateX(0);
