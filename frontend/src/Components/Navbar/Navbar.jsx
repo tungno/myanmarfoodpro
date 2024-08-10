@@ -1,5 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect, useState, memo, useContext} from 'react';
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
@@ -13,14 +12,17 @@ import downArrowIcon from '../Assets/downArrowIcon.png';
 import hamburgerIcon from '../Assets/humbergermenu.png';
 import closeIcon from '../Assets/crossmenu.png';
 import { getLocation } from "../../services/locationService";
+import {ShopContext} from "../../Context/ShopContext";
 
-const Navbar = memo(({ basketCount }) => {
+const Navbar = () => {
     const { t, i18n } = useTranslation();
     const [country, setCountry] = useState('Loading...');
     const [showCountryDropdown, setShowCountryDropdown] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [showProductsDropdown, setShowProductsDropdown] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const {getTotalCartItems} = useContext(ShopContext);
 
     useEffect(() => {
         const fetchLocation = async () => {
@@ -87,7 +89,7 @@ const Navbar = memo(({ basketCount }) => {
                 </div>
                 <div className="navbar-logo">
                     <Link style={{textDecoration: 'none'}} to="/">
-                        <img src={logo} alt="MMFood Logo"/>
+                        <img src={logo} alt="MMFood Logo"/>'
                     </Link>
                 </div>
                 <div className="navbar-section navbar-wishlist-cart1">
@@ -99,7 +101,7 @@ const Navbar = memo(({ basketCount }) => {
                     <Link style={{textDecoration: 'none'}} to='/cart'>
                         <div className="navbar-item wishlist-cart">
                             <img src={cart} alt="Cart"/>
-                            {basketCount > 0 && <span className="basket-count">{basketCount}</span>}
+                            <div className="nav-cart-count">{getTotalCartItems()}</div>
                         </div>
                     </Link>
                 </div>
@@ -201,7 +203,7 @@ const Navbar = memo(({ basketCount }) => {
                 <div className="navbar-item">
                     <Link style={{textDecoration: 'none'}} to='/cart'>
                         <img src={cart} alt="Cart"/>
-                        {basketCount > 0 && <span className="basket-count">{basketCount}</span>}
+                        <div className="nav-cart-count">{getTotalCartItems()}</div>
                     </Link>
                 </div>
                 <div onClick={handleItemClick} className="navbar-item profile-ico">
@@ -213,11 +215,6 @@ const Navbar = memo(({ basketCount }) => {
             </div>
         </nav>
     );
-});
-
-Navbar.propTypes = {
-    wishlistCount: PropTypes.number.isRequired,
-    basketCount: PropTypes.number.isRequired,
 };
 
 export default Navbar;

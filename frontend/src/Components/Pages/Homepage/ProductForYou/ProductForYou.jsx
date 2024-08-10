@@ -3,12 +3,7 @@ import './ProductForYou.css';
 import new_collections from '../../../Asset/new_collections';
 import Items from '../../../Items/Items';
 
-const ProductForYou = ({ onBasketChange }) => {
-
-
-  const handleBasketClick = (id) => {
-    onBasketChange(prev => prev + 1);
-  };
+const ProductForYou = () => {
 
   return (
       <div className='product-for-you'>
@@ -25,7 +20,6 @@ const ProductForYou = ({ onBasketChange }) => {
                   old_price={item.old_price}
                   stock_quantity={item.stock_quantity}
                   description={item.description}
-                  onBasketClick={() => handleBasketClick(item.id)}
               />
           ))}
         </div>

@@ -8,10 +8,6 @@ import Items from "../Items/Items";
 const ShopCategory = (props) => {
     const { all_product } = useContext(ShopContext);
 
-    const handleBasketClick = (product) => {
-        props.onBasketChange(prev => prev + 1); // Update basket count
-    };
-
     return (
         <div className='shop-category'>
             <img className='shopcategory-banner' src={props.banner} alt='' />
@@ -36,7 +32,6 @@ const ShopCategory = (props) => {
                                 old_price={item.old_price}
                                 stock_quantity={item.stock_quantity}
                                 description={item.description}
-                                onBasketClick={() => handleBasketClick(item.id)}
                             />
                         );
                     } else {

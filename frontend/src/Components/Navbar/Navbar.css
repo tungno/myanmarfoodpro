@@ -166,6 +166,19 @@
     padding: 5px;
     font-size: 12px;
 }
+.nav-cart-count{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+    margin-left: 25px;
+    font-size: 14px;
+    background: red;
+    color: white;
+}
 
 /* Responsive styles */
 /* Mobile Devices (iPhone 15 Pro Max and less) */
@@ -299,6 +312,19 @@
     }
     .profile-icon1 {
         display: flex;
+    }
+    .nav-cart-count{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -24px;
+        margin-left: -10px;
+        font-size: 14px;
+        background: red;
+        color: white;
     }
 }
 
@@ -436,6 +462,19 @@
     }
     .wishlist-cart img {
         height: 30px;
+    }
+    .nav-cart-count{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -24px;
+        margin-left: -10px;
+        font-size: 14px;
+        background: red;
+        color: white;
     }
 }
 

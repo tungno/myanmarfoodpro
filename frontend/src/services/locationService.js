@@ -6,7 +6,6 @@ const API_KEY = '31bb46885d90480f83233d6e1fdf9a30'; // Replace with the actual A
 export const getLocation = async () => {
     const cachedLocation = localStorage.getItem('locationData');
     if (cachedLocation) {
-        console.log('localstorage angah hiam sittelna', cachedLocation);
         return JSON.parse(cachedLocation);
     }
 

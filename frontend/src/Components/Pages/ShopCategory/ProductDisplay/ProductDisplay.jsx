@@ -14,8 +14,19 @@ const ProductDisplay = (props) => {
     const {addToCart} = useContext(ShopContext);
 
 
-    const getStockIcon = (stock) => {
-        switch (stock) {
+    const getStockStatus = (stock_quantity) => {
+        if (stock_quantity === 0) {
+            return 'out of stock';
+        } else if (stock_quantity > 0 && stock_quantity < 10) {
+            return 'few in stock';
+        } else {
+            return 'in stock';
+        }
+    };
+
+    const getStockIcon = (stock_quantity) => {
+        const status = getStockStatus(stock_quantity);
+        switch (status) {
             case 'in stock':
                 return inStockIcon;
             case 'few in stock':
@@ -66,8 +77,8 @@ const ProductDisplay = (props) => {
                 </div>
 
                 <div className="stock-status">
-                    <img src={getStockIcon(product.stock)} alt={product.stock}/>
-                    <span>{product.stock}</span>
+                    <img src={getStockIcon(product.stock_quantity)} alt={getStockStatus(product.stock_quantity)}/>
+                    <span>{getStockStatus(product.stock_quantity)}</span>
                 </div>
 
                 <p className='productdisplay-right-category'><span>Category :</span>{product.category}, {product.name}
