@@ -34,6 +34,14 @@
     .relatedproducts hr{
         width: 100px;
         height: 4px;
-
     }
+    .relatedproducts-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent line breaks */
+        justify-content: flex-start;
+    }
+
 }

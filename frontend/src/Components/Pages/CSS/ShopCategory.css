@@ -75,11 +75,10 @@
         width: 95%;
     }
     .shopcategory-products{
-        width: 100%;
         display: flex;
-        justify-content: space-evenly;
-        margin: 10px auto;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
         gap: 1px;
     }
 }

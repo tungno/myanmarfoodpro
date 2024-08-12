@@ -1,45 +1,22 @@
+// /backend/models/structs.go
 package models
 
-import (
-	"database/sql"
-	"time"
-)
+type Product struct {
+	ID            int     `json:"id"`
+	Name          string  `json:"name" validate:"required"`
+	Description   string  `json:"description"`
+	Category      string  `json:"category"`
+	StockQuantity int     `json:"stock_quantity"`
+	Image         string  `json:"image"`
+	NewPrice      float64 `json:"new_price" validate:"required,gt=0"`
+	OldPrice      float64 `json:"old_price"`
+}
 
 type User struct {
-	UserID      int           `json:"UserID"`
-	FirstName   string        `json:"FirstName"`
-	LastName    string        `json:"LastName"`
-	Email       string        `json:"Email"`
-	Password    string        `json:"Password"`
-	PhoneNumber string        `json:"PhoneNumber"`
-	LastLogin   time.Time     `json:"LastLogin"`
-	DateCreated time.Time     `json:"DateCreated"`
-	IsActive    bool          `json:"IsActive"`
-	IsDeleted   bool          `json:"IsDeleted"`
-	CreatedBy   sql.NullInt64 `json:"CreatedBy"`
-	UpdatedBy   sql.NullInt64 `json:"UpdatedBy"`
-}
-
-type Customer struct {
-	UserID        int `json:"UserID"`
-	LoyaltyPoints int `json:"LoyaltyPoints"`
-}
-
-type Admin struct {
-	UserID int    `json:"UserID"`
-	Role   string `json:"Role"`
-}
-
-type Address struct {
-	AddressID   int       `json:"AddressID"`
-	UserID      int       `json:"UserID"`
-	Street      string    `json:"Street"`
-	City        string    `json:"City"`
-	State       string    `json:"State"`
-	PostalCode  string    `json:"PostalCode"`
-	Country     string    `json:"Country"`
-	IsDefault   bool      `json:"IsDefault"`
-	AddressType string    `json:"AddressType"`
-	CreatedAt   time.Time `json:"CreatedAt"`
-	UpdatedAt   time.Time `json:"UpdatedAt"`
+	ID       int    `json:"id"`
+	Name     string `json:"name" validate:"required"`
+	Email    string `json:"email" validate:"required,email"`
+	Password string `json:"password" validate:"required"`
+	CartData string `json:"cart_data"`
+	Date     string `json:"date"`
 }
