@@ -64,6 +64,13 @@ func (h *UserHandler) Signup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Initialize the cart with 0 quantity for 300 items
+	cart := make(map[int]int)
+	for i := 0; i < 33; i++ {
+		cart[i] = 0
+	}
+	user.CartData = cart
+
 	// Hash the password
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
@@ -72,9 +79,16 @@ func (h *UserHandler) Signup(w http.ResponseWriter, r *http.Request) {
 	}
 	user.Password = string(hashedPassword)
 
+	// Serialize cart data to JSON
+	cartDataJson, err := json.Marshal(cart)
+	if err != nil {
+		sendErrorResponse(w, http.StatusInternalServerError, "Failed to serialize cart data")
+		return
+	}
+
 	// Insert the user into the database
 	query := "INSERT INTO User (name, email, password, cart_data, date) VALUES (?, ?, ?, ?, ?)"
-	_, err = h.db.Exec(query, user.Name, user.Email, user.Password, "{}", time.Now().Format("2006-01-02 15:04:05"))
+	_, err = h.db.Exec(query, user.Name, user.Email, user.Password, string(cartDataJson), time.Now().Format("2006-01-02 15:04:05"))
 	if err != nil {
 		log.Printf("Error inserting user into database: %v", err)
 		sendErrorResponse(w, http.StatusInternalServerError, "Failed to register user")
@@ -116,6 +130,7 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 
 	var user models.User
 	var dbUser models.User
+	var cartDataJson string
 
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		log.Printf("Error decoding user data: %v", err)
@@ -125,11 +140,14 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve the user from the database
 	err := h.db.QueryRow("SELECT id, name, email, password, cart_data, date FROM User WHERE email = ?", user.Email).Scan(
-		&dbUser.ID, &dbUser.Name, &dbUser.Email, &dbUser.Password, &dbUser.CartData, &dbUser.Date)
+		&dbUser.ID, &dbUser.Name, &dbUser.Email, &dbUser.Password, &cartDataJson, &dbUser.Date)
 	if err != nil {
 		sendErrorResponse(w, http.StatusBadRequest, "Invalid email or password")
 		return
 	}
+
+	// Deserialize the cart data
+	dbUser.CartData = parseCartData(cartDataJson)
 
 	// Compare the provided password with the hashed password
 	if err := bcrypt.CompareHashAndPassword([]byte(dbUser.Password), []byte(user.Password)); err != nil {
@@ -157,8 +175,9 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	jsonResponse := map[string]interface{}{
-		"success": true,
-		"token":   tokenString,
+		"success":  true,
+		"token":    tokenString,
+		"cartData": dbUser.CartData, // Include cart data in the response, if needed
 	}
 	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(jsonResponse); err != nil {

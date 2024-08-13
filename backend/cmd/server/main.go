@@ -2,6 +2,7 @@
 package main
 
 import (
+	"MyanmarFood/middleware"
 	"database/sql"
 	"github.com/rs/cors"
 	"log"
@@ -41,6 +42,9 @@ func main() {
 
 	productHandler := handlers.NewProductHandler(db)
 	userHandler := handlers.NewUserHandler(db)
+	productforyouHandler := handlers.NewProductforyouHandler(db)
+	relatedProductsHandler := handlers.NewRelatedProductsHandler(db)
+	cartHandler := handlers.NewCartHandler(db)
 
 	router := mux.NewRouter()
 
@@ -59,6 +63,16 @@ func main() {
 	// Signup and login routes
 	router.HandleFunc("/signup", userHandler.Signup).Methods("POST")
 	router.HandleFunc("/login", userHandler.Login).Methods("POST")
+
+	// Product for you routes
+	router.HandleFunc("/productforyou", productforyouHandler.ProductForYou).Methods("GET")
+	// Related product route
+	router.HandleFunc("/relatedproducts", relatedProductsHandler.RelatedProducts).Methods("POST")
+
+	// Protected routes
+	router.Handle("/addtocart", middleware.FetchUserMiddleware(http.HandlerFunc(cartHandler.AddToCart))).Methods("POST")
+	router.Handle("/removefromcart", middleware.FetchUserMiddleware(http.HandlerFunc(cartHandler.RemoveFromCart))).Methods("DELETE")
+	router.Handle("/getcart", middleware.FetchUserMiddleware(http.HandlerFunc(cartHandler.GetCart))).Methods("POST")
 
 	// Configure CORS middleware
 	c := cors.New(cors.Options{

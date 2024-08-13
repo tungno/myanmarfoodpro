@@ -207,10 +207,13 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div onClick={handleItemClick} className="navbar-item profile-ico">
-                    <Link style={{textDecoration: 'none'}} to='/login-signup'>
+                    {localStorage.getItem('auth-token')
+                        ? <div onClick={()=>{localStorage.removeItem('auth-token');window.location.replace('/');}}> <img src={profile} alt="Profile" className="profile-icon"/> <span>{t('logout')}</span> </div>
+                        :
+                        <Link style={{textDecoration: 'none'}} to='/login-signup'>
                         <img src={profile} alt="Profile" className="profile-icon"/>
                         <span>{t('login')}</span>
-                    </Link>
+                    </Link>}
                 </div>
             </div>
         </nav>

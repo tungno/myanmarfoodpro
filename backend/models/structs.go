@@ -13,10 +13,10 @@ type Product struct {
 }
 
 type User struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name" validate:"required"`
-	Email    string `json:"email" validate:"required,email"`
-	Password string `json:"password" validate:"required"`
-	CartData string `json:"cart_data"`
-	Date     string `json:"date"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name" validate:"required"`
+	Email    string      `json:"email" validate:"required,email"`
+	Password string      `json:"password" validate:"required"`
+	CartData map[int]int `json:"cart_data"`
+	Date     string      `json:"date"`
 }

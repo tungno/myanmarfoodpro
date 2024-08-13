@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductForYou.css';
-import new_collections from '../../../Asset/new_collections';
 import Items from '../../../Items/Items';
 
 const ProductForYou = () => {
+    const [productForYou, setProductForYou] = useState([]);
 
+    useEffect(() => {
+        fetch('http://localhost:8080/productforyou')
+            .then((response)=>response.json())
+            .then((data)=>setProductForYou(data));
+    }, []);
   return (
       <div className='product-for-you'>
         <h2>Products for you</h2>
         <hr />
         <div className="product-list">
-          {new_collections.map((item, i) => (
+          {productForYou.map((item, i) => (
               <Items
                   key={i}
                   id={item.id}

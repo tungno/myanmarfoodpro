@@ -1,31 +1,43 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './RelatedProducts.css';
-import data_product from "../../../Asset/data";
 import Items from "../../../Items/Items";
+import {ShopContext} from "../../../../Context/ShopContext";
 
-const RelatedProducts = (props) => {
+const RelatedProducts = ({category, id}) => {
 
-    const handleBasketClick = (product) => {
-        props.onBasketChange(prev => prev + 1); // Update basket count
-    };
+    const [related, setRelated] = useState([]);
 
+    const {addToCart} = useContext(ShopContext);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/relatedproducts', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({category: category})
+        })
+            .then ((res)=> res.json()).then((data)=>setRelated(data))
+    }, []);
   return (
     <div className='relatedproducts'>
         <h1>Related Products</h1>
         <hr />
         <div className="relatedproducts-item">
-            {data_product.map((item, i) => {
-                return <Items
-                    key={i}
-                    id={item.id}
-                    name={item.name}
-                    image={item.image}
-                    new_price={item.new_price}
-                    old_price={item.old_price}
-                    stock_quantity={item.stock_quantity}
-                    description={item.description}
-                    onBasketClick={() => handleBasketClick(item.id)}
-                />
+            {related.map((item, i) => {
+                if (id != item.id) {
+                    return <Items
+                        key={i}
+                        id={item.id}
+                        name={item.name}
+                        image={item.image}
+                        new_price={item.new_price}
+                        old_price={item.old_price}
+                        stock_quantity={item.stock_quantity}
+                        description={item.description}
+                        onBasketClick={() => addToCart(item.id)}
+                    />
+                }
             })}
         </div>
 

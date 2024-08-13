@@ -8,9 +8,8 @@ import inStockIcon from '../../../Assets/in_stock.png';
 import fewInStockIcon from '../../../Assets/few_in_stock.png';
 import outOfStockIcon from '../../../Assets/out_of_stock.png';
 
-const ProductDisplay = (props) => {
+const ProductDisplay = (product) => {
 
-    const {product} = props;
     const {addToCart} = useContext(ShopContext);
 
 
@@ -42,13 +41,13 @@ const ProductDisplay = (props) => {
         <div className='productdisplay'>
             <div className="productdisplay-left">
                 <div className="productdisplay-img-list">
-                    <img src={product.image} alt="" />
-                    <img src={product.image} alt="" />
-                    <img src={product.image} alt="" />
-                    <img src={product.image} alt="" />
+                    <img src={'http://localhost:8080' + product.image} alt="img" />
+                    <img src={'http://localhost:8080' + product.image} alt="img" />
+                    <img src={'http://localhost:8080' + product.image} alt="img" />
+                    <img src={'http://localhost:8080' + product.image} alt="img" />
                 </div>
                 <div className="productdisplay-img">
-                    <img className='productdisplay-main-img' src={product.image} alt="" />
+                    <img className='productdispl ay-main-img' src={'http://localhost:8080' + product.image} alt="img" />
                 </div>
             </div>
             <div className="productdisplay-right">
