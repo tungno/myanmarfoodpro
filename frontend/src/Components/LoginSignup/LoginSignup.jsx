@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
 
+const API_BASE_URL = "http://34.79.169.45:8080";
+
 const LoginSignup = () => {
     const [state, setState] = useState("Login");
     const [formData, setFormData] = useState({
@@ -16,7 +18,7 @@ const LoginSignup = () => {
     const login = async () => {
         console.log("Login Function executed", formData);
         try {
-            const response = await fetch("http://localhost:8080/login", {
+            const response = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -43,7 +45,7 @@ const LoginSignup = () => {
     const signup = async () => {
         console.log("Signup Function Executed", formData);
         try {
-            const response = await fetch("http://localhost:8080/signup", {
+            const response = await fetch(`${API_BASE_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

@@ -5,15 +5,21 @@ services:
     image: mysql:8.0
     container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: tungno
       MYSQL_DATABASE: mmfood
     volumes:
       - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
-    build: ./backend/cmd/server
+    build: ./backend
     container_name: go-backend
     ports:
       - "8080:8080"
@@ -23,8 +29,10 @@ services:
       DB_HOST: db
       DB_PORT: 3306
       DB_USER: root
-      DB_PASSWORD: root_password
+      DB_PASSWORD: tungno
       DB_NAME: mmfood
+      JWT_SECRET: "tungno le didim"
+    restart: always
 
   frontend:
     build: ./frontend
@@ -33,6 +41,7 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    restart: always
 
   admin:
     build: ./admin
@@ -41,6 +50,7 @@ services:
       - "5173:5173"
     depends_on:
       - backend
+    restart: always
 
 volumes:
   db_data:

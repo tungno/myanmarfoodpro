@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import './ProductForYou.css';
 import Items from '../../../Items/Items';
 
+const API_BASE_URL = "http://34.79.169.45:8080"; 
+
 const ProductForYou = () => {
     const [productForYou, setProductForYou] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/productforyou')
+        fetch(`${API_BASE_URL}/productforyou`)
             .then((response)=>response.json())
             .then((data)=>setProductForYou(data));
     }, []);

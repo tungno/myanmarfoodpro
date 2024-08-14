@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import cross_icon from '../../assets/cross_icon.png';
 import './ListProduct.css';
 
+const API_BASE_URL = "http://34.79.169.45:8080"
+
 const ListProduct = () => {
     const [allProducts, setAllProducts] = useState([]);
 
     const fetchInfo = async () => {
-        await fetch('http://localhost:8080/products')
+        await fetch(`${API_BASE_URL}/products`)
             .then((res) => res.json())
             .then((data) => { setAllProducts(data); });
     }
@@ -16,7 +18,7 @@ const ListProduct = () => {
     }, []);
 
     const remove_product = async (id) => {
-        await fetch(`http://localhost:8080/products/${id}`, {
+        await fetch(`${API_BASE_URL}/products/${id}`, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',

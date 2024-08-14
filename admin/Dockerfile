@@ -12,10 +12,9 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN npm run build
 
 # Expose the port on which the app runs
-EXPOSE 3000
+EXPOSE 5173
 
 # Serve the app using a simple HTTP server
-CMD ["npx", "serve", "-s", "build"]
+CMD ["npm", "run", "dev"]

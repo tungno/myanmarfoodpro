@@ -3,6 +3,8 @@ import './RelatedProducts.css';
 import Items from "../../../Items/Items";
 import {ShopContext} from "../../../../Context/ShopContext";
 
+const API_BASE_URL = "http://34.79.169.45:8080";
+
 const RelatedProducts = ({category, id}) => {
 
     const [related, setRelated] = useState([]);
@@ -10,7 +12,7 @@ const RelatedProducts = ({category, id}) => {
     const {addToCart} = useContext(ShopContext);
 
     useEffect(() => {
-        fetch('http://localhost:8080/relatedproducts', {
+        fetch(`${API_BASE_URL}/relatedproducts`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
