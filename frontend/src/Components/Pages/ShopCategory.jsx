@@ -1,4 +1,4 @@
-// ShopCategory.jsx
+// Product.jsx
 import React, { useContext, useState } from 'react';
 import './CSS/ShopCategory.css';
 import { ShopContext } from "../../Context/ShopContext";
