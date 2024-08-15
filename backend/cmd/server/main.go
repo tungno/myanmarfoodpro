@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"MyanmarFood/handlers"
 	_ "github.com/go-sql-driver/mysql"
@@ -92,9 +93,18 @@ func main() {
 	router.Handle("/removefromcart", middleware.FetchUserMiddleware(http.HandlerFunc(cartHandler.RemoveFromCart))).Methods("DELETE")
 	router.Handle("/getcart", middleware.FetchUserMiddleware(http.HandlerFunc(cartHandler.GetCart))).Methods("POST")
 
+	// Get the allowed origins from the environment variable
+	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
+	if allowedOrigins == "" {
+		allowedOrigins = "http://frontend:3000" // Default to frontend service if not set
+	}
+
+	// Split the allowed origins by commas
+	origins := strings.Split(allowedOrigins, ",")
+
 	// Configure CORS middleware
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3000", "http://localhost:5173"}, // Adjust this to your frontend's origin
+		AllowedOrigins:   origins,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,
