@@ -19,7 +19,8 @@ var db *sql.DB
 func initDB() {
 	var err error
 	//dsn := "root:@tcp(127.0.0.1:3306)/mmfood"
-	dsn := "root:tungno@tcp(db:3306)/mmfood"
+	//dsn := "root:tungno@tcp(db:3306)/mmfood"
+	dsn := "root:tungno@tcp(172.18.0.2:3306)/mmfood"
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatalf("Error opening database: %v", err)
