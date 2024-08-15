@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
 
-const API_BASE_URL = "http://34.79.169.45:8080";
+import {API_BASE_URL} from "../../App";
+
 
 const LoginSignup = () => {
     const [state, setState] = useState("Login");

@@ -2,8 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import './RelatedProducts.css';
 import Items from "../../../Items/Items";
 import {ShopContext} from "../../../../Context/ShopContext";
+import {API_BASE_URL} from "../../../../App";
 
-const API_BASE_URL = "http://34.79.169.45:8080";
 
 const RelatedProducts = ({category, id}) => {
 

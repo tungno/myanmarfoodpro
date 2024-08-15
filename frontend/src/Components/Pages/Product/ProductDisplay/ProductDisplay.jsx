@@ -8,7 +8,7 @@ import inStockIcon from '../../../Assets/in_stock.png';
 import fewInStockIcon from '../../../Assets/few_in_stock.png';
 import outOfStockIcon from '../../../Assets/out_of_stock.png';
 
-const baseURL = 'http://localhost:8080';
+
 
 const ProductDisplay = ({ product }) => {
     const { addToCart } = useContext(ShopContext);

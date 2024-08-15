@@ -1,10 +1,10 @@
 // ShopContext.jsx
 import React, {createContext, useEffect, useState} from 'react';
 //import all_product from '../Components/Asset/all_product'; // Ensure the correct path to the all_product file.
+import {API_BASE_URL} from "../App";
 
 export const ShopContext = createContext();
 
-const API_BASE_URL = "http://34.79.169.45:8080";
 
 const getDefaultCart = () => {
     let cart = {};
