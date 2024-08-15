@@ -4,6 +4,7 @@ package main
 import (
 	"MyanmarFood/middleware"
 	"database/sql"
+	"fmt"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -18,9 +19,17 @@ var db *sql.DB
 
 func initDB() {
 	var err error
-	//dsn := "root:@tcp(127.0.0.1:3306)/mmfood"
-	//dsn := "root:tungno@tcp(db:3306)/mmfood"
-	dsn := "root:tungno@tcp(172.18.0.2:3306)/mmfood"
+
+	// Fetching environment variables
+	dbHost := os.Getenv("DB_HOST")
+	dbPort := os.Getenv("DB_PORT")
+	dbUser := os.Getenv("DB_USER")
+	dbPassword := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+
+	// Constructing DSN (Data Source Name)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
+
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatalf("Error opening database: %v", err)
@@ -30,7 +39,6 @@ func initDB() {
 	}
 	log.Println("Connected to the database")
 }
-
 func homePage(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("This is the home page"))
