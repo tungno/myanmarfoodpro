@@ -33,7 +33,7 @@ func (h *ProductforyouHandler) ProductForYou(w http.ResponseWriter, r *http.Requ
 		// Query to retrieve the latest 2 products for each category
 		rows, err := h.db.Query(`
 			SELECT id, name, description, category, stock_quantity, image, new_price, old_price 
-			FROM Product 
+			FROM product 
 			WHERE category = ? 
 			ORDER BY id DESC 
 			LIMIT 2`, category)

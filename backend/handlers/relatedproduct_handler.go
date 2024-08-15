@@ -51,7 +51,7 @@ func (h *RelatedProductsHandler) RelatedProducts(w http.ResponseWriter, r *http.
 	// Query to retrieve products by category, limiting to 4 results
 	rows, err := h.db.Query(`
 		SELECT id, name, description, category, stock_quantity, image, new_price, old_price 
-		FROM Product 
+		FROM product 
 		WHERE category = ? 
 		ORDER BY id DESC 
 		LIMIT 4`, requestBody.Category)
