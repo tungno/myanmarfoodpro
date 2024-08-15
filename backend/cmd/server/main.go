@@ -109,7 +109,7 @@ func main() {
 	// Get the allowed origins from the environment variable
 	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
 	if allowedOrigins == "" {
-		allowedOrigins = "http://frontend:3000" // Default to frontend service if not set
+		allowedOrigins = "https://mmfood7.com" // Default to frontend service if not set
 	}
 
 	// Split the allowed origins by commas
