@@ -21,10 +21,12 @@ services:
   backend:
     build: ./backend
     container_name: backend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`mmfood7.com`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myresolver"
+      - "traefik.http.services.backend.loadbalancer.server.port=8080"
     environment:
       DB_HOST: db
       DB_PORT: 3306
@@ -32,7 +34,7 @@ services:
       DB_PASSWORD: tungno
       DB_NAME: mmfood
       JWT_SECRET: "tungno, ompi, vaanpi le didim"
-      ALLOWED_ORIGINS: "http://34.79.169.45:3000,http://mmfood7.com:3000,http://34.79.169.45:5173,http://mmfood7.com:5173"
+      ALLOWED_ORIGINS: "https://mmfood7.com"
     volumes:
       - product_images:/app/upload/images
     restart: always
@@ -40,25 +42,50 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`mmfood7.com`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
     environment:
-      REACT_APP_API_BASE_URL: "http://34.79.169.45:8080"
+      REACT_APP_API_BASE_URL: "https://mmfood7.com"
     restart: always
 
   admin:
     build: ./admin
     container_name: admin
-    ports:
-      - "5173:5173"
-    depends_on:
-      - backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.admin.rule=Host(`admin.mmfood7.com`)"
+      - "traefik.http.routers.admin.entrypoints=websecure"
+      - "traefik.http.routers.admin.tls.certresolver=myresolver"
+      - "traefik.http.services.admin.loadbalancer.server.port=5173"
     environment:
-      REACT_APP_API_BASE_URL: "http://34.79.169.45:8080"
+      REACT_APP_API_BASE_URL: "https://mmfood7.com"
+    restart: always
+
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=your-email@example.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Traefik Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "traefik-certificates:/letsencrypt"
     restart: always
 
 volumes:
   db_data:
   product_images:
+  traefik-certificates:
