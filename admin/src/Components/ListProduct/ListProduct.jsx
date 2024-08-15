@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import cross_icon from '../../assets/cross_icon.png';
 import './ListProduct.css';
 
-const API_BASE_URL ="http://34.79.169.45:8080";
+const API_BASE_URL ="https://backend.mmfood7.com";
 
 const ListProduct = () => {
     const [allProducts, setAllProducts] = useState([]);
