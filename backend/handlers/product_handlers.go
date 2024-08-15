@@ -204,7 +204,7 @@ func (h *ProductHandler) ImageUploadHandler(w http.ResponseWriter, r *http.Reque
 
 	res := map[string]interface{}{
 		"success":   1,
-		"image_url": fmt.Sprintf("http://localhost:8080/images/%s", fileName),
+		"image_url": fmt.Sprintf("http://34.79.169.45:8080/images/%s", fileName),
 	}
 
 	w.Header().Set("Content-Type", "application/json")
