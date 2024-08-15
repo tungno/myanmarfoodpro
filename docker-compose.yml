@@ -33,6 +33,8 @@ services:
       DB_NAME: mmfood
       JWT_SECRET: "tungno, ompi, vaanpi le didim"
       ALLOWED_ORIGINS: "http://34.79.169.45:3000,http://localhost:3000,http://34.79.169.45:5173,http://localhost:5173"
+    volumes:
+      - product_images:/app/upload/images
     restart: always
 
   frontend:
@@ -59,3 +61,4 @@ services:
 
 volumes:
   db_data:
+  product_images:

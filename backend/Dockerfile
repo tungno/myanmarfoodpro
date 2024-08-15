@@ -25,6 +25,9 @@ WORKDIR /app
 # Copy the Pre-built binary file from the builder stage
 COPY --from=builder /app/main .
 
+# Create the upload directory and its subdirectories
+RUN mkdir -p /app/upload/images
+
 # Expose port (make sure it matches the one you use in your app)
 EXPOSE 8080
 
