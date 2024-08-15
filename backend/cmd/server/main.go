@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"MyanmarFood/handlers"
 	_ "github.com/go-sql-driver/mysql"
@@ -31,15 +32,27 @@ func initDB() {
 	// Constructing DSN (Data Source Name)
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
 
-	db, err = sql.Open("mysql", dsn)
-	if err != nil {
-		log.Fatalf("Error opening database: %v", err)
+	// Retry mechanism with delay
+	maxRetries := 10
+	for i := 0; i < maxRetries; i++ {
+		db, err = sql.Open("mysql", dsn)
+		if err != nil {
+			log.Printf("Error opening database: %v. Retrying...", err)
+		} else {
+			err = db.Ping()
+			if err == nil {
+				log.Println("Connected to the database")
+				return
+			}
+			log.Printf("Error connecting to the database: %v. Retrying...", err)
+		}
+		time.Sleep(5 * time.Second) // Wait 5 seconds before retrying
 	}
-	if err = db.Ping(); err != nil {
-		log.Fatalf("Error connecting to the database: %v", err)
-	}
-	log.Println("Connected to the database")
+
+	// If all retries fail
+	log.Fatalf("Could not connect to the database after %d attempts", maxRetries)
 }
+
 func homePage(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("This is the home page"))
