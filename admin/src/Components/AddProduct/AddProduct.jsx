@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AddProduct.css';
 import upload_area from '../../assets/upload_area.svg';
 
-const API_BASE_URL = "http://34.79.169.45:8080";
+const API_BASE_URL = "http://backend:8080";
 
 const AddProduct = () => {
     const [image, setImage] = useState(false);

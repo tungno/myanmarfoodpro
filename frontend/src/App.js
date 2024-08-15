@@ -14,7 +14,7 @@ import farmfood_banner from './Components/Asset/banner_farmfood.png';
 import traditionalfood_banner from './Components/Asset/banner_traditionalfood.png';
 import snackfood_banner from './Components/Asset/banner_snackfood.png';
 
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";;
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://backend:8080';
 
 function App() {
 
