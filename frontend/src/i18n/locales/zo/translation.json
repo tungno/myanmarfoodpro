@@ -66,5 +66,20 @@
   "promo_code_text": "Zidek theihna laimal",
   "promo_code_placeholder": "code laimal",
   "submit": "Khak tading",
-  "remove_item": "Paikhia kik"
+  "remove_item": "Paikhia kik",
+  "login": "Lutding",
+  "sign_up": "Lutna bawlding",
+  "your_name": "Na min",
+  "email_address": "Na email min",
+  "password": "Na password",
+  "continue": "Zomto ding",
+  "already_have_account": "Account na nei nai maw?",
+  "login_here": "Hiah lutding",
+  "create_account": "Account bawl ding",
+  "click_here": "Hiah mek in",
+  "terms_and_conditions": "Hih ka lutna hangin thukhun te kazui mah dinghi",
+  "login_error": "Nalut sinleh khialhna ompak ei, khatvei lutkik o",
+  "signup_error": "Lutna nabawl lai khialhna ompak ei",
+  "login_network_error": "Nalut laitak in khialhna omei, lutkik ve!",
+  "signup_network_error": "Lutna na bawllaitak khialhna ompak ei. lutna bawlkik o!"
 }

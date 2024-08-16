@@ -66,5 +66,20 @@
   "promo_code_text": "If you have a promo code, Enter it here",
   "promo_code_placeholder": "promo code",
   "submit": "Submit",
-  "remove_item": "Remove item"
+  "remove_item": "Remove item",
+  "login": "Login",
+  "sign_up": "Sign Up",
+  "your_name": "Your Name",
+  "email_address": "Email Address",
+  "password": "Password",
+  "continue": "Continue",
+  "already_have_account": "Already have an account?",
+  "login_here": "Login here",
+  "create_account": "Create an account?",
+  "click_here": "Click here",
+  "terms_and_conditions": "By continuing, I agree to the terms of use & privacy policy.",
+  "login_error": "An error occurred during login. Please try again.",
+  "signup_error": "An error occurred during signup.",
+  "login_network_error": "An error occurred while logging in. Please try again.",
+  "signup_network_error": "An error occurred while signing up. Please try again."
 }

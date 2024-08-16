@@ -66,6 +66,21 @@
   "promo_code_text": "Hvis du har en kampanjekode, skriv den inn her",
   "promo_code_placeholder": "kampanjekode",
   "submit": "Send",
-  "remove_item": "Fjern element"
+  "remove_item": "Fjern element",
+  "login": "Logg Inn",
+  "sign_up": "Registrer Deg",
+  "your_name": "Ditt Navn",
+  "email_address": "E-postadresse",
+  "password": "Passord",
+  "continue": "Fortsett",
+  "already_have_account": "Har du allerede en konto?",
+  "login_here": "Logg inn her",
+  "create_account": "Opprett en konto?",
+  "click_here": "Klikk her",
+  "terms_and_conditions": "Ved å fortsette godtar jeg vilkårene for bruk og personvernreglene.",
+  "login_error": "En feil oppstod under pålogging. Vennligst prøv igjen.",
+  "signup_error": "En feil oppstod under registreringen.",
+  "login_network_error": "En feil oppstod under pålogging. Vennligst prøv igjen.",
+  "signup_network_error": "En feil oppstod under registreringen. Vennligst prøv igjen."
 
 }
