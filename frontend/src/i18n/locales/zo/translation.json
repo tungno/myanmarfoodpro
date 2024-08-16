@@ -51,5 +51,20 @@
   "products": "vanzuakte",
   "sort_by": "dungzui in",
   "dropdown_icon_alt": "Dropdown icon",
-  "explore_more": "zonbeh ding"
+  "explore_more": "zonbeh ding",
+  "products": "Vanzuakte",
+  "title": "Thulu",
+  "price": "Vanman",
+  "quantity": "Amalzah",
+  "total": "Vekpi gawm",
+  "remove": "Paikhia",
+  "cart_totals": "Bawm gawm vekpi",
+  "subtotal": "Vanlei vekpi",
+  "shipping_fee": "Puakman",
+  "free": "sum beilo",
+  "proceed_to_checkout": "Sum pia tading",
+  "promo_code_text": "Zidek theihna laimal",
+  "promo_code_placeholder": "code laimal",
+  "submit": "Khak tading",
+  "remove_item": "Paikhia kik"
 }

@@ -51,6 +51,21 @@
   "products": "produkter",
   "sort_by": "Sorter etter",
   "dropdown_icon_alt": "Dropdown ikon",
-  "explore_more": "Utforsk mer"
+  "explore_more": "Utforsk mer",
+  "products": "Produkter",
+  "title": "Tittel",
+  "price": "Pris",
+  "quantity": "Mengde",
+  "total": "Total",
+  "remove": "Fjern",
+  "cart_totals": "Handlekurv Totalt",
+  "subtotal": "Subtotal",
+  "shipping_fee": "Fraktkostnad",
+  "free": "Gratis",
+  "proceed_to_checkout": "GÅ TIL KASSEN",
+  "promo_code_text": "Hvis du har en kampanjekode, skriv den inn her",
+  "promo_code_placeholder": "kampanjekode",
+  "submit": "Send",
+  "remove_item": "Fjern element"
 
 }

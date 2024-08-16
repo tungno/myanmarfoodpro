@@ -51,5 +51,20 @@
   "products": "products",
   "sort_by": "Sort by",
   "dropdown_icon_alt": "Dropdown icon",
-  "explore_more": "Explore More"
+  "explore_more": "Explore More",
+  "products": "Products",
+  "title": "Title",
+  "price": "Price",
+  "quantity": "Quantity",
+  "total": "Total",
+  "remove": "Remove",
+  "cart_totals": "Cart Totals",
+  "subtotal": "Subtotal",
+  "shipping_fee": "Shipping Fee",
+  "free": "Free",
+  "proceed_to_checkout": "PROCEED TO CHECKOUT",
+  "promo_code_text": "If you have a promo code, Enter it here",
+  "promo_code_placeholder": "promo code",
+  "submit": "Submit",
+  "remove_item": "Remove item"
 }

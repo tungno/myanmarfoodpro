@@ -51,5 +51,20 @@
   "products": "ထုတ်ကုန်များ",
   "sort_by": "စီစဉ်ပါ",
   "dropdown_icon_alt": "Dropdown icon",
-  "explore_more": "နောက်ထပ် ရှာဖွေပါ"
+  "explore_more": "နောက်ထပ် ရှာဖွေပါ",
+  "products": "ထုတ်ကုန်များ",
+  "title": "ခေါင်းစဉ်",
+  "price": "စျေးနှုန်း",
+  "quantity": "အရေအတွက်",
+  "total": "စုစုပေါင်း",
+  "remove": "ဖယ်ရှားပါ",
+  "cart_totals": "စျေးခြင်းထဲရှိ စုစုပေါင်း",
+  "subtotal": "စုပေါင်း",
+  "shipping_fee": "သင်္ဘောကြေး",
+  "free": "အခမဲ့",
+  "proceed_to_checkout": "အပ်နှံမှုဆောင်ရွက်ရန်",
+  "promo_code_text": "သင်တွင် ရှိပါကဒီမှာ ဖြည့်သွင်းပါ",
+  "promo_code_placeholder": "အထူးကုဒ်",
+  "submit": "တင်ပြပါ",
+  "remove_item": "အရာအား ဖယ်ရှားပါ"
 }
