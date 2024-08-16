@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ProductDisplay.css';
 import star_icon from '../../../Asset/star_icon.png';
 import star_dull_icon from '../../../Asset/star_dull_icon.png';
@@ -8,31 +9,28 @@ import inStockIcon from '../../../Assets/in_stock.png';
 import fewInStockIcon from '../../../Assets/few_in_stock.png';
 import outOfStockIcon from '../../../Assets/out_of_stock.png';
 
-
-
 const ProductDisplay = ({ product }) => {
+    const { t } = useTranslation();
     const { addToCart } = useContext(ShopContext);
-
-    console.log("Product object:", product);
 
     const getStockStatus = (stock_quantity) => {
         if (stock_quantity === 0) {
-            return 'out of stock';
+            return t('out_of_stock');
         } else if (stock_quantity > 0 && stock_quantity < 10) {
-            return 'few in stock';
+            return t('few_in_stock');
         } else {
-            return 'in stock';
+            return t('in_stock');
         }
     };
 
     const getStockIcon = (stock_quantity) => {
         const status = getStockStatus(stock_quantity);
         switch (status) {
-            case 'in stock':
+            case t('in_stock'):
                 return inStockIcon;
-            case 'few in stock':
+            case t('few_in_stock'):
                 return fewInStockIcon;
-            case 'out of stock':
+            case t('out_of_stock'):
                 return outOfStockIcon;
             default:
                 return null;
@@ -60,7 +58,7 @@ const ProductDisplay = ({ product }) => {
                     <img src={star_icon} alt=""/>
                     <img src={star_icon} alt=""/>
                     <img src={star_dull_icon} alt=""/>
-                    <p>(122)</p>
+                    <p>({product.reviews_count || 0})</p>
                 </div>
                 <div className="productdisplay-right-prices">
                     <div className="productdisplay-right-price-old">${product.old_price}</div>
@@ -71,9 +69,9 @@ const ProductDisplay = ({ product }) => {
                 </div>
                 <div className="buttom-basket">
                     <button onClick={() => addToCart(product.id)}>
-                        ADD TO CART
+                        {t('add_to_cart')}
                     </button>
-                    <img className="basket" src={basket} alt=""/>
+                    <img className="basket" src={basket} alt={t('basket_alt')}/>
                 </div>
 
                 <div className="stock-status">
@@ -82,7 +80,7 @@ const ProductDisplay = ({ product }) => {
                 </div>
 
                 <p className="productdisplay-right-category">
-                    <span>Category :</span>{product.category}, {product.name}
+                    <span>{t('category_label')} :</span> {product.category}, {product.name}
                 </p>
             </div>
         </div>
