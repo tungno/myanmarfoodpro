@@ -1,3 +1,16 @@
+.category-container {
+    padding: 20px;
+    background-color: #f8f8f8; /* Slightly lighter background for the entire section */
+    text-align: center;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
 .collection {
     display: flex;
     flex-direction: row;
@@ -6,6 +19,7 @@
     padding: 20px;
     background-color: #f0f0f0;
     margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners for the collection container */
 }
 
 .collection-item {
@@ -19,11 +33,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    transition: transform 0.2s ease-in-out;
+}
+
+.collection-item:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
 }
 
 .collection-item img {
     width: 100%;
     height: auto;
+    border-radius: 4px; /* Rounded corners for the images */
 }
 
 /* Media query for mobile sizes */

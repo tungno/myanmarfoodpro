@@ -187,10 +187,13 @@ const Navbar = () => {
                 <a href="#" className="navbar-item">{t('tips_guides')}</a>
                 <a href="#" className="navbar-item">{t('about_us')}</a>
                 <div onClick={handleItemClick} className="navbar-item profile-icon1">
-                    <Link style={{textDecoration: 'none'}} to='/login-signup'>
-                        <img src={profile} alt="Profile" className="profile-icon"/>
-                        <span>{t('login')}</span>
-                    </Link>
+                    {localStorage.getItem('auth-token')
+                        ? <div onClick={()=>{localStorage.removeItem('auth-token');window.location.replace('/');}}> <img src={profile} alt="Profile" className="profile-icon"/> <span>{t('logout')}</span> </div>
+                        :
+                        <Link style={{textDecoration: 'none'}} to='/login-signup'>
+                            <img src={profile} alt="Profile" className="profile-icon"/>
+                            <span>{t('login')}</span>
+                        </Link>}
                 </div>
             </div>
 
@@ -213,7 +216,7 @@ const Navbar = () => {
                         <Link style={{textDecoration: 'none'}} to='/login-signup'>
                         <img src={profile} alt="Profile" className="profile-icon"/>
                         <span>{t('login')}</span>
-                    </Link>}
+                        </Link>}
                 </div>
             </div>
         </nav>
