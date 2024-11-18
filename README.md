@@ -21,6 +21,7 @@ MMFood is a comprehensive e-commerce platform that allows users to browse, selec
 - **Google Cloud Platform (GCP)**: The application is deployed on a Virtual Machine (VM) instance on GCP, providing scalability and reliability.
 
 ## Project Structure
+```
 myanmarfoodpro/
 │
 ├── admin/                    # Admin panel (Vite)
@@ -118,3 +119,4 @@ myanmarfoodpro/
 ├── traefik.toml              # Traefik configuration (if used)
 ├── .env                      # Environment variables (for local development)
 └── README.md                 # Project documentation
+```
